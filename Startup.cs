@@ -28,6 +28,13 @@ namespace EmployeeManager.Razor
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //Add Razor Page service, and default page
+            services.AddRazorPages()
+                    .AddRazorPagesOptions(options =>
+                    {
+                        options.Conventions.AddPageRoute("/EmployeeManager/List", "");
+                    });
+
             services.AddDbContext<AppDbContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("NorthwindDb")));
             services.AddDbContext<AppIdentityDbContext>(options =>
@@ -61,8 +68,12 @@ namespace EmployeeManager.Razor
             app.UseRouting();
 
             app.UseAuthentication();
-
             app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+            });
         }
     }
 }
