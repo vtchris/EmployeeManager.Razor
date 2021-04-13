@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-//using System.Linq;
+using System.Linq;
 using System.Threading.Tasks;
 using EmployeeManager.Razor.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +18,7 @@ namespace EmployeeManager.Razor.Pages.EmployeeManager
         }
         public void OnGet()
         {
-            // Linq query, select all columns, convert to list
+            // Linq query, select all columns, convert to list, the code-behind acts like the controller in an MVC
             Employees = (from e in db.Employees orderby e.EmployeeID select e).ToList();
         }
     }
