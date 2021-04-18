@@ -63,6 +63,10 @@ namespace EmployeeManager.Razor
                 app.UseDeveloperExceptionPage();
             }
 
+            // Passes error code as a parameter when redirecting to Error page
+            app.UseStatusCodePagesWithReExecute("/Error", "?code={0}");
+            app.UseExceptionHandler("/Error");
+
             app.UseStaticFiles();
 
             app.UseRouting();
