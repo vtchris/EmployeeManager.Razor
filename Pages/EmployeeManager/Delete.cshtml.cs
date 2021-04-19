@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EmployeeManager.Razor.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeManager.Razor.Pages.EmployeeManager
 {
+    [Authorize(Roles = "Manager")]
     public class DeleteModel : PageModel
     {
         private readonly AppDbContext db = null;
